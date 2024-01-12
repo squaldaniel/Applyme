@@ -15,5 +15,8 @@ class RecruitersModel extends Model
         'email',
         'namerecruiter',
         'surname',
+        'phone',
+        // 'updated_at'
     ];
+    public $timestamps = false;
 }

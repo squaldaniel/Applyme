@@ -16,8 +16,8 @@ return new class extends Migration
 
         $sql = 'create table '.$this->table.'(
             id int unsigned auto_increment primary key,
-            email varchar(50) unique,
-            namerecruiter varchar(30),
+            email varchar(50) unique not null,
+            namerecruiter varchar(30) not null,
             surname varchar(70),
             phone varchar(20),
             active boolean default true

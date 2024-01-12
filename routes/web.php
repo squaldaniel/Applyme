@@ -27,5 +27,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::middleware('auth')->prefix('recuiter')->group(function(){
+    Route::post('store', [App\Http\Controllers\RecruiterController::class, 'store'])->name('recruiter.store');
+});
+Route::get('test', [App\Http\Controllers\TestController::class, 'index']);
 
 require __DIR__.'/auth.php';
