@@ -16,6 +16,7 @@ class TestController extends Controller
         $var6= [10, 3, 41, 13, 43, 44, 13];
         $var7= [1 , 5 , 6 , 7 , 9 , 10 , 11 , 14 , 15 , 18 , 19 , 21 , 22 , 24 , 25];
         $unique = array_unique(array_merge($var1, $var2, $var3, $var4, $var5, $var6, $var7));
-        return $unique;
+        $result = array_values($unique);
+        return $result;
     }
 }
