@@ -22,5 +22,6 @@ create table resume_curse(
     curse_end date,
     show boolean default true
     ) engine=innodb charset=utf8mb4;
+create table expirences()
 
 
