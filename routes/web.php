@@ -19,7 +19,10 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $count = App\Models\RecruitersModel::get()->count();
+    return view('dashboard')->with([
+                                "count"=>$count
+                            ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

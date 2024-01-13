@@ -14,7 +14,10 @@ class RecruiterController extends Controller
     public function index()
     {
         $recruiters = RecruitersModel::paginate(10);
-        return view('recruiters')->with(['recruiters' => $recruiters]);
+        return view('recruiters')->with([
+                                    'recruiters' => $recruiters,
+                                    'count'=>$recruiters->count()
+                                ]);
     }
 
     /**
