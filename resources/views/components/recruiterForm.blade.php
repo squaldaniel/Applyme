@@ -1,3 +1,4 @@
+<h1 class="fw-bold text-body-emphasis badge bg-info-subtle text-info-emphasis rounded-pill">Cadastro de Recrutadores</h1>
 <form action="{{route('recruiter.store')}}" method="POST">
     @csrf
 

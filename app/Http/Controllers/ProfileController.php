@@ -8,17 +8,38 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\RecruitersModel;
+use App\Models\User as UserModel;
+use App\Traits\UserTrait;
 
 class ProfileController extends Controller
 {
+    /**
+    * Display the user's resume
+    */
+    public function index()
+    {
+        if (Auth::check()) {
+            // Se houver, obter o usuário autenticado
+            $user = Auth::user();
+        } else {
+            // Se não houver usuário autenticado, obter o primeiro usuário do modelo User
+            $user = UserModel::first();
+        }
+        $toClean = ['email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at'];
+        $user = UserTrait::clean($user, $toClean);
+        return view('startbootstrap.index')->with(['user'=>$user]);
+    }
     /**
      * Display the user's profile form.
      */
     public function edit(Request $request): View
     {
+        // :count="$count"
+        $count = RecruitersModel::get()->count();
         return view('profile.edit', [
             'user' => $request->user(),
-        ]);
+        ])->with('count', $count);
     }
 
     /**
