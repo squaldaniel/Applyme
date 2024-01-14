@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\ResumeRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,8 @@ use Illuminate\View\View;
 use App\Models\RecruitersModel;
 use App\Models\User as UserModel;
 use App\Traits\UserTrait;
+use App\Models\ResumeBaseModel;
+
 
 class ProfileController extends Controller
 {
@@ -19,15 +22,18 @@ class ProfileController extends Controller
     */
     public function index()
     {
-        if (Auth::check()) {
-            // Se houver, obter o usuário autenticado
-            $user = Auth::user();
+        if (auth()->check()) {
+            // Se estiver logado pega os dados do usuario
+            $user = auth()->user();
         } else {
-            // Se não houver usuário autenticado, obter o primeiro usuário do modelo User
-            $user = UserModel::first();
+            // Se não houver usuário autenticado, obter o primeiro usuário
+            $user = UserModel::with('resumebase')->first();
         }
+
         $toClean = ['email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at'];
-        $user = UserTrait::clean($user, $toClean);
+        $user = UserTrait::addAttribute(UserTrait::clean($user, $toClean), ['resumebase' => $user->resumebase[0]]);
+        $user->resumebase->aboutme = UserTrait::splitText($user->resumebase->aboutme, 2);
+
         return view('startbootstrap.index')->with(['user'=>$user]);
     }
     /**
@@ -35,10 +41,14 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        // :count="$count"
+        $user = $request->user();
         $count = RecruitersModel::get()->count();
+        $toClean = ['email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at'];
+        $user = UserTrait::addAttribute(UserTrait::clean($user, $toClean), ['resumebase' => $user->resumebase[0]]);
+
+        // dd($user->resumebase->aboutme);
         return view('profile.edit', [
-            'user' => $request->user(),
+            'user' => $user,
         ])->with('count', $count);
     }
 
@@ -77,5 +87,28 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+    public function store(ResumeRequest $request)
+    {
+        switch($request->partresume)
+        {
+            case 'info':
+                ResumeBaseModel::where('user_id', $request->user_id)
+                            ->update([
+                                'aboutme' =>$request->aboutme
+                            ]);
+                break;
+            case 'photo':
+                $newphoto = $request->file('resumephoto');
+                // Gerar um nome único para o arquivo
+                $photoname = uniqid() . '_' . $newphoto->getClientOriginalName();
+                $newphoto->move(public_path('uploads'), $photoname);
+                ResumeBaseModel::where('user_id', $request->user_id)
+                                ->update(['photo'=>$photoname]);
+
+                // return response()->json(['mensagem' => 'Upload bem-sucedido', 'nome_arquivo' => $photoname]);
+                break;
+        }
+        return redirect()->back();
     }
 }

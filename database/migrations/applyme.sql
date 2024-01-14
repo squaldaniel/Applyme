@@ -10,7 +10,11 @@ create table recruiters(
 -- migration ok
 create table resume_base(
     id int auto_increment primary key,
-    nameresume varchar(30)
+    user_id bigint unsigned not null,
+    foreign key user_id references users(id),
+    nameresume varchar(30),
+    aboutme longtext not null,
+    photo text not null
     ) engine=innodb charset=utf8mb4;
 --
 create table resume_curse(
@@ -26,5 +30,3 @@ create table resume_curse(
 create table expirences(
 
 ) engine=innodb charset=utf8mb4;
-
-
