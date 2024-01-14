@@ -1,11 +1,17 @@
 ## Applyme
 Aplicação desenvolvida para ajudar na busca de empregos, cadastrando recrutadores e deixando uma pagina publica para acesso ao seu perfil.
+> [!WARNING]
+> Necessita php. 8.1.26 e Node 9.6.4
 
-Some basic Git commands are:
+### Para instalar esta aplicação siga os passos: 
 ```
-git status
-git add
-git commit
+git clone https://github.com/squaldaniel/Applyme.git
+cd applyme (ou pasta que você criou)
+composer install && npm install
+```
+Depois precisa rode as migrations do banco de dados com o comando:
+```
+php artisan migrate
 ```
 
 This site was built using [GitHub Pages](https://pages.github.com/).
