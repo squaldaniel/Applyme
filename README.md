@@ -13,6 +13,11 @@ Depois, rode as migrations do banco de dados com o comando:
 ```
 php artisan migrate
 ```
+faça uma cópia do arquivo .env.example para .env e pode rodar sua aplicação com
+```
+php artisan serve
+npm run dev
+```
 
 Para conhecer o autor, acesse: [Instagram](https://www.instagram.com/danielshoganmkt/).
 
@@ -21,21 +26,10 @@ Informações profissionais: [linkedin](https://www.linkedin.com/in/danielshogan
 Funções já prontas:
 
 * Cadastro de Recrutadores,
-* Tenmplate de página de perfil
-
-> [!NOTE]
-> Useful information that users should know, even when skimming content.
+* Template de página de perfil
 
 > [!TIP]
-> Helpful advice for doing things better or more easily.
+> Faça um fork deste repositório e personalise o template de acordo com seu interesse.
 
-> [!IMPORTANT]
-> Key information users need to know to achieve their goal.
-
-> [!WARNING]
-> Urgent info that needs immediate user attention to avoid problems.
-
-> [!CAUTION]
-> Advises about risks or negative outcomes of certain actions.
 
 
