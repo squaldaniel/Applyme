@@ -1,5 +1,5 @@
-## Applyme :heavy_check_mark:
-Aplicação desenvolvida para ajudar na busca de empregos, cadastrando recrutadores e deixando uma pagina publica para acesso ao seu perfil.
+## Applyme :heavy_check_mark: - BETA
+Aplicação desenvolvida para ajudar na busca de empregos, cadastrando recrutadores e deixando uma página publica para acesso ao seu perfil.
 > [!WARNING]
 > Necessita php. 8.1.26 e Node 9.6.4
 
@@ -9,16 +9,19 @@ git clone https://github.com/squaldaniel/Applyme.git
 cd applyme (ou pasta que você criou)
 composer install && npm install
 ```
-Depois precisa rode as migrations do banco de dados com o comando:
+Depois, rode as migrations do banco de dados com o comando:
 ```
 php artisan migrate
 ```
 
-This site was built using [GitHub Pages](https://pages.github.com/).
+Para conhecer o autor, acesse: [Instagram](https://www.instagram.com/danielshoganmkt/).
 
-- George Washington
-* John Adams
-+ Thomas Jefferson
+Informações profissionais: [linkedin](https://www.linkedin.com/in/danielshogans/).
+
+Funções já prontas:
+
+* Cadastro de Recrutadores,
+* Tenmplate de página de perfil
 
 > [!NOTE]
 > Useful information that users should know, even when skimming content.
