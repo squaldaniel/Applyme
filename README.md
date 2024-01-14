@@ -1,4 +1,4 @@
-## Applyme
+## Applyme :heavy_check_mark:
 Aplicação desenvolvida para ajudar na busca de empregos, cadastrando recrutadores e deixando uma pagina publica para acesso ao seu perfil.
 > [!WARNING]
 > Necessita php. 8.1.26 e Node 9.6.4
