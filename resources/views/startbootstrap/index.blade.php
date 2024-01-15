@@ -1,13 +1,3 @@
-{{-- @php dd($user) @endphp --}}
-@php
-// function splitInCols($aboutme){
-//     $textAboutMe='';
-//     foreach ($aboutme as $key => $value) {
-//         $textAboutMe .='<div class="col-lg-4 me-auto"><p class="lead">'.$value.'</p></div>';
-//     }
-//     return $textAboutMe;
-// }
-@endphp
 <!DOCTYPE html>
 <html lang="en">
     <head>
