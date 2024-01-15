@@ -23,7 +23,7 @@ class ProfileController extends Controller
     public function index()
     {
         //redirecion caso seja o primeiro acesso e não houver informações cadastradas.
-        if (Auth::user() === null) {
+        if (Auth::user() === null && UserModel::with('resumebase')->first()->count() == 0) {
             return Redirect::route('register');
         }
         if (auth()->check()) {

@@ -31,7 +31,8 @@ class ResumeRequest extends FormRequest
             break;
             case 'info' :
                 $requestRaw = [
-                    'aboutme'=>"required|string"
+                    'aboutme'=>"required|string",
+                    'positions'=>"required|string"
                 ];
             break;
         }
