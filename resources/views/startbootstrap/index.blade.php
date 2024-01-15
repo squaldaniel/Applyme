@@ -37,7 +37,7 @@
             <div class="container d-flex align-items-center flex-column">
                 <!-- Masthead Avatar Image-->
                 @if($user->resumebase->photo != '')
-                    <img class="masthead-avatar mb-5 rounded-circle" src="uploads/{{$user->resumebase->photo}}" alt="..." />
+                    <img class="masthead-avatar mb-5 rounded-circle" src="uploads/{{$user->resumebase->photo }}" alt="..." />
                 @else
                     <img class="masthead-avatar mb-5 " src="startbootstrap/assets/img/avataaars.svg" alt="..." />
                 @endif

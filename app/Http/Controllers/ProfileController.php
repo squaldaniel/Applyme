@@ -22,6 +22,10 @@ class ProfileController extends Controller
     */
     public function index()
     {
+        //redirecion caso seja o primeiro acesso e não houver informações cadastradas.
+        if (Auth::user() === null) {
+            return Redirect::route('register');
+        }
         if (auth()->check()) {
             // Se estiver logado pega os dados do usuario
             $user = auth()->user();
@@ -41,6 +45,15 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $user = Auth::user();
+
+        if(!ResumeBaseModel::where('user_id', $user->id)->exists()){
+            ResumeBaseModel::create([
+                'user_id'=>$user->id,
+                'aboutme'=>'',
+                'photo'=>'',
+            ]);
+        }
         $user = $request->user();
         $count = RecruitersModel::get()->count();
         $toClean = ['email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at'];

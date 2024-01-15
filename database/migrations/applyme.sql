@@ -11,7 +11,7 @@ create table recruiters(
 create table resume_base(
     id int auto_increment primary key,
     user_id bigint unsigned not null,
-    foreign key user_id references users(id),
+    foreign key (user_id) references users(id),
     nameresume varchar(30),
     aboutme longtext not null,
     photo text not null
