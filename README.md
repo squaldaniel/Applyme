@@ -15,6 +15,11 @@ Depois, rode as migrations do banco de dados com o comando:
 ```
 php artisan migrate
 ```
+Após rodar as migrações, não esqueça de gerar a nova chave para o projeto com o comando
+```
+php artisan key:generate
+```
+
 faça uma cópia do arquivo .env.example para .env e pode rodar sua aplicação com
 ```
 php artisan serve
