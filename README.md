@@ -2,6 +2,8 @@
 Aplicação desenvolvida para ajudar na busca de empregos, cadastrando recrutadores e deixando uma página publica para acesso ao seu perfil.
 > [!WARNING]
 > Necessita php. 8.1.26 e Node 9.6.4
+> Esta é uma aplicação beta, bugs e inconsistências podem ser encontradas. Use por sua conta e risco.
+
 
 ### Para instalar esta aplicação siga os passos: 
 ```
