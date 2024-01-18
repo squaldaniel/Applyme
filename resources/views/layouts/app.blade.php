@@ -17,6 +17,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.2/materia/bootstrap.min.css" integrity="sha512-4+PCWoNUxEeasuW2ipP8Avsr7X/oS61Kz2CLdwS6ZfHt7jLuzAAcIfPlWLg4aGaDNo0GSmTOmM9biaqnmo6P7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
