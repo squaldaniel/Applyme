@@ -30,3 +30,12 @@ create table resume_curse(
 create table expirences(
 
 ) engine=innodb charset=utf8mb4;
+
+
+create table sites(
+    id int unsigned auto_increment,
+    primary key (id),
+    sitename varchar(50) not null,
+    sitelink text not null,
+    descriptions text
+) engine=innodb charset=utf8mb4;

@@ -33,6 +33,12 @@ Route::middleware('auth')->prefix('recruiter')->group(function(){
     Route::post('store', [App\Http\Controllers\RecruiterController::class, 'store'])->name('recruiter.store');
     Route::get('index', [App\Http\Controllers\RecruiterController::class, 'index'])->name('recruiter.index');
 });
+Route::middleware('auth')->prefix('sites')->group(function(){
+    Route::get('index', [App\Http\Controllers\SitesController::class, 'index'])->name('sites.index');
+    Route::post('store', [App\Http\Controllers\SitesController::class, 'store'])->name('sites.store');
+
+});
+
 Route::get('test', [App\Http\Controllers\TestController::class, 'index']);
 
 require __DIR__.'/auth.php';
