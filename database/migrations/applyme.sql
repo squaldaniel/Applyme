@@ -31,11 +31,20 @@ create table expirences(
 
 ) engine=innodb charset=utf8mb4;
 
-
-create table sites(
+-- migration ok
+create table sites (
     id int unsigned auto_increment,
     primary key (id),
     sitename varchar(50) not null,
     sitelink text not null,
     descriptions text
+) engine=innodb charset=utf8mb4;
+
+
+create table portifolio (
+    id int unsigned auto_increment,
+    primary key (id),
+    port_name varchar(30) not null,
+    port_photo text not null,
+    port_description text not null,
 ) engine=innodb charset=utf8mb4;
