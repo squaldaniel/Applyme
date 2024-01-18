@@ -40,11 +40,20 @@ create table sites (
     descriptions text
 ) engine=innodb charset=utf8mb4;
 
-
+-- migration ok
 create table portifolio (
     id int unsigned auto_increment,
     primary key (id),
     port_name varchar(30) not null,
     port_photo text not null,
     port_description text not null,
+) engine=innodb charset=utf8mb4;
+
+create table visits (
+    id int unsigned auto_increment,
+    primary key (id),
+    resume_id int,
+    foreign key(resume_id) references resume_base(id),
+    source text,
+    parms text
 ) engine=innodb charset=utf8mb4;

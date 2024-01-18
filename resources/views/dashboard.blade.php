@@ -1,4 +1,4 @@
-<x-app-layout :count="$count">
+<x-app-layout :count="$count" :js="$graph">
     <!-- js -->
     <script type="text/javascript">
 

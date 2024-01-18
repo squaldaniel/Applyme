@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Resources\GraphicResource;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ProfileController::class, 'index']);
 
 Route::get('/dashboard', function () {
+    $graph = GraphicResource::postJs();
     $count = App\Models\RecruitersModel::get()->count();
     return view('dashboard')->with([
-                                "count"=>$count
+                                "count"=>$count,
+                                'graph'=>$graph
                             ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 

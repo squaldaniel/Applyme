@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\ResumeRequest;
+use App\Http\Resources\GraphicResource;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,15 +14,17 @@ use App\Models\RecruitersModel;
 use App\Models\User as UserModel;
 use App\Traits\UserTrait;
 use App\Models\ResumeBaseModel;
-
+use App\Traits\DashboardTrait;
 
 class ProfileController extends Controller
 {
+    use DashboardTrait;
     /**
     * Display the user's resume
     */
     public function index()
     {
+        // dd($this->getUrl());
         //redirecion caso seja o primeiro acesso e não houver informações cadastradas.
         if (Auth::user() === null && UserModel::with('resumebase')->first()->count() == 0) {
             return Redirect::route('register');
@@ -38,7 +41,8 @@ class ProfileController extends Controller
         $user = UserTrait::addAttribute(UserTrait::clean($user, $toClean), ['resumebase' => $user->resumebase[0]]);
         $user->resumebase->aboutme = UserTrait::splitText($user->resumebase->aboutme, 2);
 
-        return view('startbootstrap.index')->with(['user'=>$user]);
+        return view('startbootstrap.index')->with([
+                                        'user'=>$user]);
     }
     /**
      * Display the user's profile form.
