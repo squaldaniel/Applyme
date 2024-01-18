@@ -21,7 +21,7 @@ return new class extends Migration
             nameresume varchar(30),
             aboutme longtext,
             photo text,
-            positions text
+            positions longtext
             ) engine=innodb charset=utf8mb4';
         DB::select($sql);
     }

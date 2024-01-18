@@ -24,9 +24,8 @@ class ProfileController extends Controller
     */
     public function index()
     {
-        // dd($this->getUrl());
         //redirecion caso seja o primeiro acesso e não houver informações cadastradas.
-        if (Auth::user() === null && UserModel::with('resumebase')->first()->count() == 0) {
+        if (UserModel::count() == 0) {
             return Redirect::route('register');
         }
         if (auth()->check()) {
@@ -107,12 +106,14 @@ class ProfileController extends Controller
     }
     public function store(ResumeRequest $request)
     {
+        // dd($request->positions);
         switch($request->partresume)
         {
             case 'info':
                 ResumeBaseModel::where('user_id', $request->user_id)
                             ->update([
-                                'aboutme' =>$request->aboutme
+                                'aboutme' =>$request->aboutme,
+                                'positions' => "$request->positions",
                             ]);
                 break;
             case 'photo':

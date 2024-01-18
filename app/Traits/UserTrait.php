@@ -20,14 +20,6 @@ trait UserTrait
     }
     public static function splitText($text, $parts)
     {
-        if ($parts <= 0) {
-            return ["Número inválido de partes"];
-        }
-        // Calcula o tamanho aproximado de cada parte
-        $tamanhoParte = ceil(strlen($text) / $parts);
-        // Divide o texto em partes aproximadamente iguais
-        $splits = str_split($text, $tamanhoParte);
-        // Retorna as partes
-        return $splits;
+        $words = explode(' ', $text);$quant = (int) round(count($words) / $parts);$textParts = array_chunk($words, $quant);$cols = [];foreach ($textParts as $key => $columns){array_push($cols, implode(' ', $columns));}return $cols;
     }
 }

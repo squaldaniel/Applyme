@@ -14,7 +14,9 @@ class ResumeBaseModel extends Model
         'nameresume',
         'aboutme',
         'user_id',
-        'photo'
+        'photo',
+        'postitions',
+
     ];
     public $timestamps = false;
     public function user()

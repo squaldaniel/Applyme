@@ -20,7 +20,7 @@
     @endif
 
     <label for="inputPassword5" class="form-label">Cargos:</label>
-    <input class="form-control" type="text" name="positions">
+    <input class="form-control" type="text" name="positions" value="{{$user->resumebase->positions}}" required>
     @if($errors->has('aboutme'))
     <div id="aboutmehelp" class="form-text text-danger">
         Campo necessário!
