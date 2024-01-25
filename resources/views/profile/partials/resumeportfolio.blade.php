@@ -1,6 +1,6 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-<h4>Dados curriculares</h4>
+<h4>Portifolio</h4>
 <form action="{{route('profile.store')}}" method="POST">
     @csrf
     <input type="hidden" name="partresume" value="info">
@@ -32,32 +32,3 @@
 
     <input type="submit" value="atualizar" class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
 </form>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const inputTags = document.getElementById('inputTags');
-
-      inputTags.addEventListener('keydown', function (event) {
-        const keyCode = event.keyCode || event.which;
-
-        if (keyCode === 188) {  // 188 é o código da vírgula
-          event.preventDefault();  // Impede a vírgula de aparecer no campo de texto
-          adicionarTag();
-        }
-      });
-
-      function adicionarTag() {
-        const tagValue = inputTags.value.trim();
-
-        if (tagValue) {
-          // Aqui você pode adicionar lógica para formatar ou processar a tag
-          console.log(`Tag adicionada: ${tagValue}`);
-
-          // Adiciona a tag ao final do texto
-          inputTags.value += `,`;
-
-          // Limpa espaços no início do texto
-          inputTags.value = inputTags.value.trimLeft();
-        }
-      }
-    });
-  </script>

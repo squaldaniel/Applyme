@@ -39,7 +39,10 @@ Route::middleware('auth')->prefix('recruiter')->group(function(){
 Route::middleware('auth')->prefix('sites')->group(function(){
     Route::get('index', [App\Http\Controllers\SitesController::class, 'index'])->name('sites.index');
     Route::post('store', [App\Http\Controllers\SitesController::class, 'store'])->name('sites.store');
-
+});
+Route::middleware('auth')->prefix('portifolio')->group(function(){
+    Route::get('index', [App\Http\Controllers\PortifolioController::class, 'index'])->name('portifolio.index');
+    // Route::post('store', [App\Http\Controllers\PortifolioController::class, 'store'])->name('portifolio.store');
 });
 
 Route::get('test', [App\Http\Controllers\TestController::class, 'index']);
