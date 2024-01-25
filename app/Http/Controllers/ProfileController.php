@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\ResumeRequest;
-use App\Http\Resources\GraphicResource;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,11 +32,13 @@ class ProfileController extends Controller
             $user = auth()->user();
         } else {
             // Se não houver usuário autenticado, obter o primeiro usuário
-            $user = UserModel::with('resumebase')->first();
+            $user = UserModel::with(['resumebase', 'portifolio'])->first();
         }
-
         $toClean = ['email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at'];
-        $user = UserTrait::addAttribute(UserTrait::clean($user, $toClean), ['resumebase' => $user->resumebase[0]]);
+        $user = UserTrait::addAttribute(UserTrait::clean($user, $toClean), [
+                            'resumebase' => $user->resumebase[0],
+                            'portifolio' =>$user->portifolio
+                        ]);
         $user->resumebase->aboutme = UserTrait::splitText($user->resumebase->aboutme, 2);
 
         return view('startbootstrap.index')->with([

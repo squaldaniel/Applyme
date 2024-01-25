@@ -16,6 +16,8 @@ return new class extends Migration
         $sql = 'create table '.$this->table.' (
             id int unsigned auto_increment,
             primary key (id),
+            user_id bigint unsigned not null,
+            foreign key (user_id) references users(id),
             port_name varchar(30) not null,
             port_photo text not null,
             port_description text not null

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PortifolioRequest;
+use App\Models\PortifolioModel;
 
 class PortifolioController extends Controller
 {
@@ -25,9 +27,19 @@ class PortifolioController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PortifolioRequest $request)
     {
-        dd($request->all());
+        $photo = $request->file('projectphoto');
+        // Gerar um nome único para o arquivo
+        $photoname = uniqid() . '_' . $photo->getClientOriginalName();
+        $photo->move(public_path('uploads'), $photoname);
+        PortifolioModel::create([
+            'user_id' => auth()->user()->id,
+            'port_name' => $request->projectname,
+            'port_photo' => $photoname,
+            'port_description' => $request->projectdescricion,
+        ]);
+        return redirect()->back()->with('messages', "projeto inserido com sucesso!");
     }
 
     /**

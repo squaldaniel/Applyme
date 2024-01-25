@@ -1,5 +1,5 @@
 <h1 class="fw-bold text-body-emphasis badge bg-info-subtle text-info-emphasis rounded-pill">Cadastro de Portifólio</h1>
-<form action="{{route('portifolio.store')}}" method="POST">
+<form action="{{route('portifolio.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     @if($errors->any())
     <div class="text-danger">
