@@ -34,6 +34,9 @@ class ProfileController extends Controller
             // Se não houver usuário autenticado, obter o primeiro usuário
             $user = UserModel::with(['resumebase', 'portifolio'])->first();
         }
+        if (ResumeBaseModel::count() == 0) {
+            return Redirect::route('dashboard');
+        }
         $toClean = ['email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at'];
         $user = UserTrait::addAttribute(UserTrait::clean($user, $toClean), [
                             'resumebase' => $user->resumebase[0],

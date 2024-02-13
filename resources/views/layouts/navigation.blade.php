@@ -24,6 +24,9 @@
                     <x-nav-link :href="route('portifolio.index')" :active="request()->routeIs('portifolio.index')" >
                         {{ ('Portifólio')}}
                     </x-nav-link>
+                    <x-nav-link :href="route('mailtrigger.index')" :active="request()->routeIs('mailtrigger.index')" >
+                        {{ ('Disparador de Email')}}
+                    </x-nav-link>
                 </div>
             </div>
 

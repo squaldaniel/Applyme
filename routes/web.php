@@ -46,6 +46,10 @@ Route::middleware('auth')->prefix('portifolio')->group(function(){
     Route::get('index', [App\Http\Controllers\PortifolioController::class, 'index'])->name('portifolio.index');
     // Route::post('store', [App\Http\Controllers\PortifolioController::class, 'store'])->name('portifolio.store');
 });
+Route::middleware('auth')->prefix('mailtrigger')->group(function(){
+    Route::get('index', [App\Http\Controllers\MailTriggerController::class, 'index'])->name('mailtrigger.index');
+    // Route::post('store', [App\Http\Controllers\PortifolioController::class, 'store'])->name('portifolio.store');
+});
 
 Route::get('test', [App\Http\Controllers\TestController::class, 'index']);
 
